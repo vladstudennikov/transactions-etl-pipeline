@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="urn:iso:std:iso:20022:tech:xsd:pain.001.001.03">
+  <CstmrCdtTrfInitn>
+    <GrpHdr>
+      <MsgId>MSG-1</MsgId>
+      <CreDtTm>2025-10-28T09:59:50Z</CreDtTm>
+      <NbOfTxs>1</NbOfTxs>
+      <CtrlSum>1214.15</CtrlSum>
+      <InitgPty><Nm>Lambda AB</Nm></InitgPty>
+    </GrpHdr>
+    <PmtInf>
+      <PmtInfId>PmtInf-1</PmtInfId>
+      <PmtMtd>TRF</PmtMtd>
+      <NbOfTxs>1</NbOfTxs>
+      <CtrlSum>1214.15</CtrlSum>
+      <Dbtr><Nm>Lambda AB</Nm></Dbtr>
+      <DbtrAcct><Id><IBAN>NO9386011117947</IBAN></Id></DbtrAcct>
+      <CdtTrfTxInf>
+        <PmtId><EndToEndId>E2E-1</EndToEndId></PmtId>
+        <Amt><InstdAmt Ccy="EUR">1214.15</InstdAmt></Amt>
+        <Cdtr><Nm>Pi Enterprises</Nm></Cdtr>
+        <CdtrAcct><Id><IBAN>PT50000201231234567890154</IBAN></Id></CdtrAcct>
+      </CdtTrfTxInf>
+    </PmtInf>
+  </CstmrCdtTrfInitn>
+</Document>

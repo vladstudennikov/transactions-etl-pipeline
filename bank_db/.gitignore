@@ -1,0 +1,60 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+.env/
+
+# IDE / editor settings
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# MySQL / DB backups (optional)
+*.sql
+
+# Logs
+*.log
+
+# Python environment variables file
+.env
+
+# Alembic / migrations (optional, if not tracked)
+alembic/versions/*.pyc

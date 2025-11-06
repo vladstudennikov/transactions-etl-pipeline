@@ -1,0 +1,60 @@
+version: "3.8"
+
+services:
+  # Zookeeper - required for Kafka
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.5.0
+    container_name: zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - "2181:2181"
+    networks:
+      - bank-network
+
+  # Kafka broker
+  kafka:
+    image: confluentinc/cp-kafka:7.5.0
+    container_name: kafka
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"
+      - "9093:9093"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+    networks:
+      - bank-network
+
+  # ClickHouse Data Warehouse
+  clickhouse:
+    image: clickhouse/clickhouse-server:23.8
+    container_name: clickhouse
+    ports:
+      - "8123:8123"  # HTTP interface
+      - "9000:9000"  # Native client port
+    environment:
+      CLICKHOUSE_DB: bank_dw
+      CLICKHOUSE_USER: dwuser
+      CLICKHOUSE_PASSWORD: dwpass
+      CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT: 1
+    volumes:
+      - clickhouse-data:/var/lib/clickhouse
+      - ./data_warehouse_creator/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql:ro
+    networks:
+      - bank-network
+
+networks:
+  bank-network:
+    driver: bridge
+
+volumes:
+  clickhouse-data:

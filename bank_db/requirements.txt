@@ -1,0 +1,5 @@
+SQLAlchemy==1.4.49
+alembic==1.12.0
+mysqlclient==2.2.4
+Faker==23.3.0
+python-dotenv==1.0.0
