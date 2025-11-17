@@ -52,9 +52,23 @@ services:
     networks:
       - bank-network
 
+  # Grafana
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    restart: unless-stopped
+    environment:
+      - TERM=linux
+      - GF_PLUGINS_PREINSTALL=grafana-clock-panel,grafana-polystat-panel,grafana-clickhouse-datasource
+    ports:
+      - '3000:3000'
+    # volumes:
+    #   - 'grafana_storage:/var/lib/grafana'
+  
 networks:
   bank-network:
     driver: bridge
 
 volumes:
   clickhouse-data:
+  # grafana_storage: {}
