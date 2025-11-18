@@ -31,6 +31,7 @@ echo ""
 # Step 3: Wait for services to be ready
 echo -e "${YELLOW}Step 3: Waiting for services to be ready (30 seconds)...${NC}"
 sleep 30
+# sleep 5
 echo -e "${GREEN}✓ Services should be ready${NC}"
 echo ""
 
@@ -64,6 +65,18 @@ sleep 5
 docker exec clickhouse clickhouse-client --query "SHOW DATABASES" | grep -q "bank_dw" && \
     echo -e "${GREEN}✓ Database 'bank_dw' exists${NC}" || \
     echo -e "${RED}✗ Database 'bank_dw' not found. Check init-db.sql${NC}"
+echo ""
+
+# Step 7: Init dashboard
+echo -e "${YELLOW}Step 7: Initializing Dashboard"
+cd dashboard_init
+if [ ! -d "venv" ]; then
+    python3 -m venv venv
+fi
+source venv/bin/activate
+pip install -q -r requirements.txt
+python3 init.py
+cd ..
 echo ""
 
 # Instructions for running
