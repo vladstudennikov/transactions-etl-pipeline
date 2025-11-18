@@ -1,0 +1,23 @@
+{
+    "found": true, 
+    "client": {
+        "id": 13, 
+        "name": "Lambda AB", 
+        "iban": "NO9386011117947", 
+        "mean_sum": 1000.0, 
+        "country": "NO", 
+        "currency": "NOK", 
+        "account_status": "active", 
+        "risk_score": 12.9, 
+        "annual_turnover": 45575113.97, 
+        "num_transactions": 1924, 
+        "last_tx_date": "2025-06-13T20:39:59", 
+        "contact_email": "calderonkenneth@example.org", 
+        "contact_phone": "399.835.1006x1471", 
+        "address": "USCGC Murphy, FPO AA 97466", 
+        "created_at": "2025-10-24T20:39:58", 
+        "updated_at": "2025-10-24T20:39:58", 
+        "notes": "Plant model table improve century rate ground various hope.", 
+        "is_corporate": true
+    }
+}
